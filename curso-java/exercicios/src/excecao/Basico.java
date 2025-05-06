@@ -10,18 +10,12 @@ public class Basico {
 
         try{
             imprimirNomeDoAluno(a1);
-        } catch(Exception e){
-            System.out.println("Ocorreu um erro ao imprimir o usuário");
+        } catch(Exception excecao){
+            System.out.println("Ocorreu um erro ano momento de imprimir o nome do usuário");
         }
 
         try {
-            System.out.println(7/0);
-        } catch (ArithmeticException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            System.out.println(7/0);
+            System.out.println(7 / 0);
         } catch (ArithmeticException e) {
             System.out.println("Ocorreu o erro: " + e.getMessage());
         }
@@ -31,6 +25,5 @@ public class Basico {
 
     public static void imprimirNomeDoAluno(Aluno aluno){
         System.out.println(aluno.nome);
-
     }
 }

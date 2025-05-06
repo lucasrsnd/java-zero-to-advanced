@@ -7,20 +7,20 @@ public class ChecadaVsNaoChecada {
 
         try {
             geraErro2();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (Throwable e) {
+            throw new RuntimeException(e.getMessage());
         }
 
-        System.out.println("Fim");
+        System.out.println("Fim :)");
     }
 
+    // EXCEÇÃO NÃO CHECADA OU NAO VERIFICADA (CONSIDERADA MELHOR)
     static void geraErro1(){
-        new RuntimeException("Ocorreu um erro mto bão, #01!");
+        throw new RuntimeException("Ocorreu um erro bem legal #01!");
     }
 
+    // EXCEÇÃO CHECADA OU VERIFICADA
     static void geraErro2() throws Exception{
-        throw new Exception("Ocorreu um erro mto bão, #02!");
+        throw new Exception("Ocorreu um erro bem legal #02!");
     }
-
-
 }

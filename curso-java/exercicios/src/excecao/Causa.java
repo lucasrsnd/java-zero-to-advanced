@@ -5,6 +5,7 @@ import streams.Aluno;
 public class Causa {
 
     public static void main(String[] args) {
+
         try {
             metodoA(null);
         } catch (IllegalArgumentException e) {
@@ -26,7 +27,7 @@ public class Causa {
 
     static void metodoB(Aluno aluno){
         if(aluno == null){
-            throw new NullPointerException("Aluno esta Nulo");
+            throw new NullPointerException("Aluno está nulo!!!");
         }
         System.out.println(aluno.nome);
     }
