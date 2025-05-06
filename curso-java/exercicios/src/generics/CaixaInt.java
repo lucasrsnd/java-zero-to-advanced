@@ -1,5 +1,4 @@
 package generics;
 
-public class CaixaInt extends Caixa<Integer>{
-
+public class CaixaInt <X> extends Caixa<X> {
 }

@@ -3,10 +3,11 @@ package generics;
 public class CaixaIntTeste {
 
     public static void main(String[] args) {
-        Caixa<Integer> caixaA = new CaixaInt();
-        caixaA.aguardar(123);
 
-        int coisaA = caixaA.abrir();
+        CaixaInt caixaA = new CaixaInt();
+        caixaA.guardar(123);
+
+        Integer coisaA = (Integer) caixaA.abrir();
         System.out.println(coisaA);
     }
 }
