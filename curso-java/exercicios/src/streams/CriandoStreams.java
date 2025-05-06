@@ -15,15 +15,16 @@ public class CriandoStreams {
         langs.forEach(print);
 
         String[] maisLangs = {"Python ", "Lisp ", "Perl ", "Go\n"};
+
         Stream.of(maisLangs).forEach(print);
         Arrays.stream(maisLangs).forEach(print);
-        Arrays.stream(maisLangs, 1, 2).forEach(print); //o ultimo elemento nao é incluido (nesse caso, o 2)
+        Arrays.stream(maisLangs, 1, 2).forEach(print); //NAO INCLUI O ULTIMO ELEMENTO
 
         List<String> outrasLangs = Arrays.asList("C ", "PHP ", "Kotlin\n");
         outrasLangs.stream().forEach(print);
         outrasLangs.parallelStream().forEach(print);
 
-        Stream.generate (() -> "a").forEach(print);
+        // Stream.generate (() -> "a").forEach(print);
         Stream.iterate(0, n -> n + 1).forEach(println);
 
     }
