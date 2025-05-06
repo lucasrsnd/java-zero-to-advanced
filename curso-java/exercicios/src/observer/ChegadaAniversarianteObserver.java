@@ -1,4 +1,6 @@
 package observer;
 
-public class ChegadaAniversarianteObserver {
+public interface ChegadaAniversarianteObserver {
+
+    public void chegou(ChegadaAniversarianteEvent event);
 }
