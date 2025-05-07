@@ -1,9 +1,9 @@
-package br.com.cod3r.cm;
-import br.com.cod3r.cm.excecao.ExplosaoException;
-import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import br.com.cod3r.cm.modelo.Campo;
+package test.java.br.com.cod3r.cm;
+import main.java.br.com.cod3r.cm.excecao.ExplosaoException;
 import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+import main.java.br.com.cod3r.cm.modelo.Campo;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

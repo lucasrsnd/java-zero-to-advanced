@@ -1,8 +1,8 @@
-package br.com.cod3r.cm;
+package test.java.br.com.cod3r.cm;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 public class Teste {
 
