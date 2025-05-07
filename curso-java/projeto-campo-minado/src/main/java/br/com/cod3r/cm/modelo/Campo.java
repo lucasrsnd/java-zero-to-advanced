@@ -8,12 +8,11 @@ public class Campo {
 
     private final int linha;
     private final int coluna;
-
     private boolean aberto = false;
     private boolean minado = false;
     private boolean marcado = false;
-
     private List<Campo> vizinhos = new ArrayList<>();
+    private List<CampoObservador> observadores = new ArrayList<>();
 
     public Campo(int coluna, int linha) {
         this.coluna = coluna;
@@ -41,29 +40,33 @@ public class Campo {
         }
     }
 
-    public void alternarMarcacao(){
-        if(!aberto){
+    public void alternarMarcacao() {
+        if(!aberto) {
             marcado = !marcado;
+            notificarObservadores(marcado ? CampoEvento.MARCAR : CampoEvento.DESMARCAR);
         }
     }
 
-    public boolean abrir(){
-        if(!aberto && !marcado){
+    public boolean abrir() {
+        if(!aberto && !marcado) {
             aberto = true;
 
-            if(minado){
+            if(minado) {
+                notificarObservadores(CampoEvento.EXPLODIR);
                 throw new ExplosaoException();
             }
-            if(vizinhancaSegura()){
-                vizinhos.forEach(v-> v.abrir());
+
+            if(vizinhancaSegura()) {
+                vizinhos.forEach(v -> v.abrir());
             }
+
+            notificarObservadores(CampoEvento.ABRIR);
             return true;
-        } else{
-            return false;
         }
+        return false;
     }
 
-    boolean vizinhancaSegura(){
+    public boolean vizinhancaSegura(){
         return vizinhos.stream().noneMatch(v-> v.minado);
     }
 
@@ -104,7 +107,7 @@ public class Campo {
         boolean protegido = minado && marcado;
         return desvendado || protegido;
     }
-    long minasNaVizinhanca(){
+    public long minasNaVizinhanca(){
         return vizinhos.stream().filter(v -> v.minado).count();
     }
     void reiniciar(){
@@ -125,4 +128,18 @@ public class Campo {
             return "?";
         }
     }
+
+    public void registrarObservador(CampoObservador observador) {
+        observadores.add(observador);
+    }
+
+    private void notificarObservadores(CampoEvento evento) {
+        observadores.forEach(o -> o.eventoOcorreu(this, evento));
+    }
+
+    public void setAbertoForcado(boolean aberto) {
+        this.aberto = aberto;
+        notificarObservadores(CampoEvento.ABRIR);
+    }
+
 }

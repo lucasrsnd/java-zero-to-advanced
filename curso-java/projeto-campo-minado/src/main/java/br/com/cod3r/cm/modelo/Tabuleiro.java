@@ -4,14 +4,15 @@ import main.java.br.com.cod3r.cm.excecao.ExplosaoException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
 public class Tabuleiro {
     private int linhas;
     private int colunas;
     private int minas;
-
     private final List<Campo> campos = new ArrayList<>();
+    private List<BiConsumer<ResultadoEvento, Boolean>> observadores = new ArrayList<>();
 
     public Tabuleiro(int linhas, int colunas, int minas) {
         this.linhas = linhas;
@@ -29,9 +30,14 @@ public class Tabuleiro {
                     .filter(c -> c.getLinha() == linha && c.getColuna() == coluna)
                     .findFirst()
                     .ifPresent(c -> c.abrir());
-        } catch (ExplosaoException e) {
-            campos.forEach(c -> c.setAberto(true));
-            throw e;
+
+            if(objetivoAlcancado()) {
+                notificarObservadores(true);
+            }
+        } catch(ExplosaoException e) {
+            // Abre todos os campos para mostrar onde estavam as minas
+            campos.forEach(c -> c.setAbertoForcado(true));
+            notificarObservadores(false);
         }
     }
 
@@ -99,4 +105,29 @@ public class Tabuleiro {
 
         return sb.toString();
     }
+
+    public List<Campo> getCampos() {
+        return campos;
+    }
+
+    public int getLinhas() {
+        return linhas;
+    }
+
+    public int getColunas() {
+        return colunas;
+    }
+
+    public void registrarObservador(BiConsumer<ResultadoEvento, Boolean> observador) {
+        observadores.add(observador);
+    }
+
+    private void notificarObservadores(boolean resultado) {
+        observadores.forEach(o -> o.accept(
+                resultado ? ResultadoEvento.GANHOU : ResultadoEvento.PERDEU,
+                resultado
+        ));
+    }
+
+
 }
