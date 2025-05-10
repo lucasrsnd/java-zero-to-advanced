@@ -1,8 +1,10 @@
 package teste.basico;
 
-import modelo.basico.Usuario;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import javax.persistence.*;
+import modelo.basico.Usuario;
 
 public class AlterarUsuario2 {
 
@@ -14,10 +16,8 @@ public class AlterarUsuario2 {
         Usuario usuario = em.find(Usuario.class, 6L);
         usuario.setNome("Juliano Alterado");
 
-        //em.merge(usuario);
-
         em.getTransaction().commit();
-//isso ainda funciona pq o objeto esta no estado gerenciado
+
         em.close();
         emf.close();
     }

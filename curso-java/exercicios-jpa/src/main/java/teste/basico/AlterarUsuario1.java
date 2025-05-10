@@ -1,8 +1,10 @@
 package teste.basico;
 
-import modelo.basico.Usuario;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import javax.persistence.*;
+import modelo.basico.Usuario;
 
 public class AlterarUsuario1 {
 
@@ -14,8 +16,6 @@ public class AlterarUsuario1 {
         Usuario usuario = em.find(Usuario.class, 6L);
         usuario.setNome("Juliano");
         usuario.setEmail("reijulian@lanches.com.br");
-        //o merge é responsavel por pegar um usuario que ja
-        //esta no banco e fazer uma alteracao nele
         em.merge(usuario);
 
         em.getTransaction().commit();

@@ -1,6 +1,9 @@
 package teste.basico;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import modelo.basico.Usuario;
-import javax.persistence.*;
 
 public class AlterarUsuario3 {
 
@@ -10,8 +13,7 @@ public class AlterarUsuario3 {
 
         em.getTransaction().begin();
         Usuario usuario = em.find(Usuario.class, 6L);
-        em.detach(usuario); //deixa o objeto no estado nao-gerenciado
-        //(agr vc so pode fazer mudancas lancando o merge)
+        em.detach(usuario);
 
         usuario.setNome("Juliano Leitao");
 

@@ -12,7 +12,7 @@ public class Usuario {
     @Column (name = "nome", nullable = false)
     private String nome;
 
-    //@Transient
+    @Transient
     private String email;
 
     public Usuario(){

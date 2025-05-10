@@ -7,7 +7,7 @@ public class NovoProduto {
         DAO< Produto> dao = new DAO<>(Produto.class);
 
         Produto produto = new Produto("Monitor", 2999.99);
-        //dao.abrirTransacao().incluir(produto).fecharTransacao().fecharEM();
+        dao.abrirTransacao().incluir(produto).fecharTransacao().fecharEM();
         dao.incluirAtomico(produto).fecharEM();
         System.out.println("Id do produto: " + produto.getId());
 
