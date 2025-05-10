@@ -1,9 +1,9 @@
 package br.com.cod3r.exerciciossb.model.entities;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
