@@ -1,2 +1,2 @@
 # java-zero-to-advanced
-Progresso do curso de java da udemy.
+Progresso do estudos da linguagem java.
