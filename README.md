@@ -1,2 +1,2 @@
 # java-zero-to-advanced
-Progresso do estudos da linguagem java.
+Estudos do curso: "Java COMPLETO: Do Zero ao Profissional + Projetos!"
